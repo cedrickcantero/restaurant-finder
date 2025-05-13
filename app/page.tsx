@@ -8,14 +8,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<any[]>([]);
-  const [structuredQuery, setStructuredQuery] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setResults([]);
-    setStructuredQuery(null);
 
     try {
       const response = await fetch('/api/execute', {
@@ -33,7 +31,6 @@ export default function Home() {
 
       const data = await response.json();
       setResults(data.results);
-      setStructuredQuery(data.query);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {

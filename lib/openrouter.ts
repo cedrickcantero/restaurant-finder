@@ -1,4 +1,4 @@
-const OPENROUTER_API_KEY = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 export async function convertToStructuredQuery(userInput: string): Promise<any> {
@@ -49,14 +49,13 @@ No explanations. No markdown.`;
     const content = data.choices[0].message.content;
     
     let jsonString = content
-    .replace(/```json|```/g, '') // Remove code fences
-    .split('\n')                  // Split into lines
-    .map((line: string) => line.trim())     // Trim each line
-    .filter((line: string) => line !== '')  // Remove empty lines
-    .join(' ')                    // Join back to a single string
+    .replace(/```json|```/g, '')
+    .split('\n')              
+    .map((line: string) => line.trim())   
+    .filter((line: string) => line !== '') 
+    .join(' ')                
     .trim();
   
-  // Try to find the first valid JSON object
   const jsonMatch = jsonString.match(/\{.*\}/);
   if (jsonMatch) {
     jsonString = jsonMatch[0];

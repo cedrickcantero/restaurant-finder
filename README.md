@@ -8,6 +8,7 @@ An LLM-driven restaurant search application that converts natural language queri
 - Integration with Foursquare Places API
 - Clean and responsive UI
 - API endpoint for backend processing
+- Secure handling of API keys
 
 ## Technology Stack
 
@@ -34,8 +35,9 @@ An LLM-driven restaurant search application that converts natural language queri
    ```
 3. Create a `.env.local` file in the root directory with the following variables:
    ```
-   NEXT_PUBLIC_OPENROUTER_API_KEY=your_openrouter_api_key
-   NEXT_PUBLIC_FOURSQUARE_API_KEY=your_foursquare_api_key
+   # Server-side environment variables (secure)
+   OPENROUTER_API_KEY=your_openrouter_api_key
+   FOURSQUARE_API_KEY=your_foursquare_api_key
    ```
 
 ### Running the Development Server
@@ -45,6 +47,15 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Security
+
+This application follows security best practices for handling API keys:
+
+- API keys are stored as server-side environment variables
+- API requests are made from server-side API routes, not client-side code
+- Environment variables are not exposed to the client
+- Error messages are sanitized to prevent information leakage
 
 ## API Endpoint
 
@@ -91,7 +102,7 @@ Response:
 ### Assumptions
 - The application assumes that users will enter queries related to restaurant search.
 - Environment variables are used for API keys to maintain security.
-- The application uses client-side API key transmission with the `NEXT_PUBLIC_` prefix, which assumes deployment on a trusted platform.
+- API keys are kept secure by using server-side environment variables and API routes.
 
 ### Limitations
 - The free tier of OpenRouter API has rate limits and token limits which may affect query processing.

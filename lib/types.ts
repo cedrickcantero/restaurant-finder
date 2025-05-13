@@ -1,6 +1,3 @@
-// Types for the application
-
-// Restaurant type
 export type Restaurant = {
   id: string
   name: string
@@ -13,7 +10,6 @@ export type Restaurant = {
   imageUrl?: string
 }
 
-// LLM response type
 export type LLMResponse = {
   action: string
   parameters: {
@@ -27,7 +23,6 @@ export type LLMResponse = {
   }
 }
 
-// Foursquare API response type (simplified)
 export type FoursquareResponse = {
   results: FoursquareResult[]
   context?: any

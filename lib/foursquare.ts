@@ -1,6 +1,6 @@
 import type { LLMResponse, Restaurant } from "@/lib/types"
 
-const FOURSQUARE_API_KEY = process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY;
+const FOURSQUARE_API_KEY = process.env.FOURSQUARE_API_KEY;
 const FOURSQUARE_API_URL = 'https://api.foursquare.com/v3/places/search';
 
 export interface FoursquareResponseType {
